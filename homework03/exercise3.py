@@ -11,4 +11,4 @@ root["proteins"]["protein"] = data["protein_list"]
 
 
 with open("proteins.xml", "w") as o:
-    o.write(xmltodict.unparse(root, pretty=True))
+    o.write(xmltodict.unparse(root, pretty=True)) #chatgpt is used here to understand the examples in the notes
