@@ -4,30 +4,28 @@ import csv
 with open("proteinlist_hw3.json", "r") as f:
     data = json.load(f)
 
-proteins = data["protein_list"]
+with open("proteins.csv", "w", newline="") as o:
+    csv_writer = csv.writer(o)
 
-fieldnames = [
-    "primaryAccession",
-    "proteinName",
-    "geneName",
-    "organism_scientificName",
-    "sequence_length",
-    "sequence_mass",
-    "function",
-]
+    header = [
+        "primaryAccession",
+        "proteinName",
+        "geneName",
+        "organism_scientificName",
+        "sequence_length",
+        "sequence_mass",
+        "function",
+    ]
+    csv_writer.writerow(header)
 
-with open("proteins.csv", "w", newline="") as out_f:
-    writer = csv.DictWriter(out_f, fieldnames=fieldnames)
-    writer.writeheader()
-
-    for p in proteins:
-        row = {
-            "primaryAccession": p.get("primaryAccession", ""),
-            "proteinName": p.get("proteinName", ""),
-            "geneName": p.get("geneName", ""),
-            "organism_scientificName": p.get("organism", {}).get("scientificName", ""),
-            "sequence_length": p.get("sequence", {}).get("length", ""),
-            "sequence_mass": p.get("sequence", {}).get("mass", ""),
-            "function": p.get("function", ""),
-        }
-        writer.writerow(row)
+    for protein in data["protein_list"]:
+        row = [
+            protein.get("primaryAccession", ""),
+            protein.get("proteinName", ""),
+            protein.get("geneName", ""),
+            protein.get("organism", {}).get("scientificName", ""),
+            protein.get("sequence", {}).get("length", ""),
+            protein.get("sequence", {}).get("mass", ""),
+            protein.get("function", ""),
+        ]
+        csv_writer.writerow(row)
