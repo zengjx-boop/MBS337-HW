@@ -1,3 +1,6 @@
-# Here is my file of homework codes for MBS-337
-Updated 260202: Homework03 
+# MBS 337 – Homework Repository
 
+This repository contains homework assignments for the MBS 337 course.  
+Each homework is organized in its own directory and includes Python scripts, required input files, generated outputs, and documentation.
+
+---
